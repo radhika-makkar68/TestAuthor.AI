@@ -3,6 +3,7 @@ import { SelectionMenu } from "@chegg-ui/selectionmenu";
 import React, { useState } from "react";
 import {
   ContentDiv,
+  Heading,
   MainContent,
   Menu,
   NumberInput,
@@ -19,10 +20,12 @@ import { Textarea } from "@chegg-ui/textarea";
 import { Button, SecondaryButton } from "@chegg-ui/button";
 import { Link } from "@chegg-ui/link";
 import { Dropdown } from "@chegg-ui/dropdown";
+import { useNavigate } from 'react-router-dom';
 
 const Home: React.FunctionComponent = () => {
   const [activeItem, setActiveItem] = useState<number | undefined>(1);
-
+  const navigate = useNavigate();
+  
   console.log(activeItem);
 
   const props = {
@@ -63,14 +66,34 @@ const Home: React.FunctionComponent = () => {
 
   const [value, setValue] = useState("");
   console.log();
+
+  const handleGenerateQuestionsClick = () => {
+    navigate('/question-paper-preview');
+  };
+
+  
   return (
     <MainContent>
+        <Heading variant="h1">TestAuthor.AI</Heading>
       <ContentDiv>
         <Typography variant="subtitle">Content Source</Typography>
         <Menu size="lg" {...props} activeItemIndex={activeItem} />
         {activeItem === 0 ? (
           <>
-            <Typography variant="subtitle">Search Your Topic Here</Typography>
+             <Typography variant="subtitle">Enter Your Subject</Typography>
+            <Input
+              inputId="username"
+              labelText=""
+              onChange={() => {
+                /* do nothing */
+              }}
+              name="username"
+              autoComplete="username"
+              type="text"
+              placeholder="Enter a subject name"
+              data-test="login-cred-email-input"
+            />
+            <Typography variant="subtitle">Enter Your Topic</Typography>
             <Input
               inputId="username"
               labelText=""
@@ -141,7 +164,7 @@ const Home: React.FunctionComponent = () => {
             placeholder="Eg. 10"
           />
         </OptionDiv>
-        <Button disableHoverAnimation>Generate Questions</Button>
+        <Button disableHoverAnimation  onClick={handleGenerateQuestionsClick}>Generate Questions</Button>
       </ContentDiv>
     </MainContent>
   );

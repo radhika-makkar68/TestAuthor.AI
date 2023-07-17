@@ -1,4 +1,3 @@
-import { Button, OutlineButton, SecondaryButton } from '@chegg-ui/button';
 import { Dropdown } from '@chegg-ui/dropdown';
 import { Input } from '@chegg-ui/input';
 import { Link } from '@chegg-ui/link';
@@ -15,6 +14,10 @@ export const MainContent = styled.div`
   height:80vh;
 `;
 
+export const Heading=styled(Typography)`
+color:${colors.orange800};
+margin-bottom:10px
+`
 
 export const ContentDiv=styled.div`
 background-color:#EFEFEF;
